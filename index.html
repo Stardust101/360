@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>360浏览器</title>
+    <style>
+        /*初始化*/
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        /*第一屏的布局*/
+        .first{
+            background-color: #0da5d6;
+            padding-top: 30px;
+        }
+        .first .logo{
+            background: url("images/logo.png");
+            width: 251px;
+            height: 186px;
+            margin: 40px auto;
+        }
+        .first .text{
+            text-align: center;
+            margin: 80px 10px 50px 10px;
+        }
+        .first .text img{
+            margin:auto 34px;
+            opacity: 0;
+        }
+        .first .info{
+            background: url("images/info_1.png");
+            width: 772px;
+            height: 49px;
+            margin: 0 auto;
+        }
+
+        /*第二屏布局*/
+        .second{
+            background-color:#2AB561;
+           overflow: hidden;
+        }
+        .second>div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .second .shield{
+            width: 500px;
+            height: 400px;
+        }
+        .second .info{
+            background: url("images/info_2.png");
+            width: 635px;
+            height: 309px;
+        }
+        .second img{
+            /*去掉图片之间的间隙*/
+            float: left;
+        }
+        /*打乱图片*/
+        .second .shield>img:nth-child(1){
+            transform: translate(-80px,-100px) rotate(60deg);
+        }
+        .second .shield>img:nth-child(2){
+            transform: translate(80px,100px) rotate(50deg);
+        }
+        .second .shield>img:nth-child(3){
+            transform: translate(180px,-200px) rotate(70deg);
+        }
+        .second .shield>img:nth-child(4){
+            transform: translate(200px,-100px) rotate(40deg);
+        }
+        .second .shield>img:nth-child(5){
+            transform: translate(600px,200px) rotate(30deg);
+        }
+        .second .shield>img:nth-child(6){
+            transform: translate(300px,-300px) rotate(20deg);
+        }
+        .second .shield>img:nth-child(7){
+            transform: translate(200px,200px) rotate(60deg);
+        }
+        .second .shield>img:nth-child(8){
+            transform: translate(240px,-300px) rotate(60deg);
+        }
+        .second .shield>img:nth-child(9){
+            transform: translate(140px,-300px) rotate(60deg);
+        }
+
+        /*第三屏布局*/
+        .third{
+            background-color:#DE8910;
+            overflow: hidden;
+            position: relative;
+        }
+        .third>div{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .third .info{
+            background: url("images/info_3.png");
+            width: 631px;
+            height: 278px;
+        }
+        .third .circle{
+            background: url("images/circle.png");
+            width: 453px;
+            height: 449px;
+        }
+        .third .rocket{
+            background: url("images/rocket.png");
+            width: 203px;
+            height: 204px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transform: translate(100px,220px);
+        }
+
+        /*第四屏布局*/
+        .fourth{
+            background-color: #0EA9B1;
+            overflow: hidden;
+        }
+        .fourth>div{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .fourth .search{
+            width: 530px;
+            height: 300px;
+            position: relative;
+        }
+        .fourth .toolbar{
+            background: url("images/search.png");
+            width: 529px;
+            height: 66px;
+            transform: translateX(-130%);
+        }
+        .fourth .txt{
+            background: url("images/key.png");
+            width: 0;
+            height: 22px;
+            position: absolute;
+            left: 20px;
+            top: 23px;
+        }
+        .fourth .wrap{
+            margin-top: -12px;
+            overflow: hidden;
+        }
+        .fourth .result{
+            background: url("images/result.png");
+            width: 529px;
+            height: 372px;
+            transform: translateY(-100%);
+        }
+        .fourth .info{
+            background: url("images/info_4.png");
+            width: 612px;
+            height: 299px;
+        }
+
+        /*第五屏布局*/
+        .fifth{
+             background-color:#0DA5D6;
+             overflow: hidden;
+            position: relative;
+         }
+        .fifth>div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .fifth .info{
+            background: url("images/info_5.png");
+            width: 1077px;
+            height: 134px;
+        }
+        .fifth .toolbarLine{
+            background: url("images/toolbar.png");
+            width: 1004px;
+            height: 79px;
+        }
+        .fifth .l_r_line{
+            width: 1px;
+            height: 518px;
+            background-color: white;
+            position: absolute;
+            top: 136px;
+        }
+        .fifth .leftLine{
+            left: 180px;
+            transform: translateY(-130%);
+        }
+        .fifth .rightLine{
+            right: 180px;
+            transform: translateY(100%);
+        }
+        .fifth .t_b_line{
+            width: 1006px;
+            height: 1px;
+            position: absolute;
+            background-color: white;
+            left: 180px;
+        }
+        .fifth .topLine{
+            top:135px;
+            transform: translateX(130%);
+        }
+        .fifth .bottomLine{
+            bottom:0;
+            transform: translateX(-130%);
+        }
+        .fifth .extra{
+            background: url("images/extra.png");
+            width: 394px;
+            height: 29px;
+            position: absolute;
+            right: 200px;
+            bottom: 5px;
+        }
+        .fifth .toolbarUrl{
+            width: 0;
+            height: 30px;
+            border: 1px solid white;
+            border-radius: 2px;
+            position: absolute;
+            left: 291px;
+            top:163px;
+            opacity: 1;
+        }
+
+        /*第一屏动画*/
+        .first.current .text img{
+            margin: 0 4px;
+            opacity: 1;
+            transition: all 1s linear;
+        }
+
+        /*第二屏动画*/
+        .second.current .shield img{
+            transition: all 1s linear;
+            transform: translate(0,0) rotate(0deg);
+        }
+
+        /*第三屏动画*/
+        .third.current .rocket{
+            transition: all 1s linear;
+            transform: translate(950px,-200px);
+        }
+
+        /*第四屏动画*/
+        .fourth.current .toolbar{
+            transition: all 1s linear;
+            transform: translate(0,0);
+        }
+        .fourth.current .txt{
+            animation: typing 2s steps(5) 1.2s 1 forwards;
+        }
+        .fourth.current .result{
+            transition: all 1s linear 3.7s;
+            transform: translate(0,0);
+        }
+        /*打字的动画*/
+        @keyframes typing {
+            0%{
+
+            }
+            100%{
+                width: 99px;
+            }
+        }
+
+        /*第五屏动画*/
+        .fifth.current .lines>div{
+            transition: all 1s linear;
+            transform: translate(0,0);
+        }
+        .fifth.current .toolbarUrl{
+            transition: all 1.2s linear 1.2s  ;
+            width: 876px;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullpage">
+        <!--第一屏布局-->
+        <div class="first section">
+            <div class="logo"></div>
+            <div class="text">
+                <img src="images/text_1.png" alt="">
+                <img src="images/text_2.png" alt="">
+                <img src="images/text_3.png" alt="">
+                <img src="images/text_4.png" alt="">
+                <img src="images/text_5.png" alt="">
+                <img src="images/text_6.png" alt="">
+                <img src="images/text_7.png" alt="">
+                <img src="images/text_8.png" alt="">
+            </div>
+            <div class="info"></div>
+        </div>
+        <!--第二屏布局-->
+        <div class="second section">
+            <div class="shield">
+                <img src="images/shield_1.png" alt="">
+                <img src="images/shield_2.png" alt="">
+                <img src="images/shield_3.png" alt="">
+                <img src="images/shield_4.png" alt="">
+                <img src="images/shield_5.png" alt="">
+                <img src="images/shield_6.png" alt="">
+                <img src="images/shield_7.png" alt="">
+                <img src="images/shield_8.png" alt="">
+                <img src="images/shield_9.png" alt="">
+            </div>
+            <div class="info"></div>
+        </div>
+        <!--第三屏布局-->
+        <div class="third section ">
+            <div class="info"></div>
+            <div class="circle"></div>
+            <div class="rocket"></div>
+        </div>
+        <!--第四屏布局-->
+        <div class="fourth section ">
+            <div class="search">
+                <div class="toolbar"></div>
+                <div class="txt"></div>
+                <div class="wrap">
+                    <div class="result"></div>
+                </div>
+            </div>
+            <div class="info"></div>
+        </div>
+        <!--第五屏布局-->
+        <div class="fifth section">
+            <div class="info"></div>
+            <div class="toolbarLine"></div>
+            <div class="toolbarUrl"></div>
+            <div class="lines">
+                <div class="leftLine l_r_line"></div>
+                <div class="rightLine l_r_line"></div>
+                <div class="topLine t_b_line"></div>
+                <div class="bottomLine t_b_line"></div>
+            </div>
+            <div class="extra"></div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <script>
+        $(function(){
+            //使用fullpage插件实现滚屏的渲染效果
+            $("#fullpage").fullpage({
+                css3:true,
+                //使用这个函数  实现滚屏加载机制
+                afterLoad:function(anchorLink, index){
+                    //1.我们滚屏的时候，需要先清除上一次滚屏的样式
+                    //2.然后再添加上这次滚屏的样式，这样的话，我们才能实现反复的滚屏样式
+                    $('.section').removeClass("current");
+                    setTimeout(function(){
+                        $('.section').eq(index-1).addClass("current");
+                    },50)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
